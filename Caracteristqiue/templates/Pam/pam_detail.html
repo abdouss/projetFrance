@@ -1,0 +1,52 @@
+{% extends "Pam/base.html" %}
+{% block title %} Pam Details | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<h2>{{ pams.Nom_scientifique }}
+<small>Asked by <a href="{{pams.user.get_absolute_url}}">{{ pams.user.username }}</a></small>
+{% if request.user == pams.user %}
+<span style="float: right;">
+<a class="btn btn-success btn-sm" href="{{pams.get_absolute_url}}edit/" role="button">Edit</a>
+<a class="btn btn-danger btn-sm" href="{{pams.get_absolute_url}}delete/" role="button">Delete</a>
+</span>
+{% endif %}
+</h2> 
+<hr>
+<b>Nom_vulgaire: </b>{{ pams.nom_vulgaire }}<br>
+<b>Order: </b>{{ pams.ordre }}<br>
+<hr>
+<strong>Details</strong>
+<hr>
+<p>{{ pams.famille }}</p>
+<hr>
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <h2>Utilite:</h2>
+
+        </div><!-- /col-sm-12 -->
+
+    </div><!-- /row -->
+
+    <hr>
+
+    {% for utilite in utilite_list %}
+     <ul>
+        <li>{{utilite.id_Utilite}}</li>
+        <li>{{utilite.maladie}}</li>
+        <li>{{utilite.mode_emploi}}</li>
+        <li>{{utilite.pamss}}</li>
+
+
+
+     </ul>
+        
+  {% endfor %}
+</div><!-- /container -->
+
+{% endblock content %}

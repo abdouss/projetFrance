@@ -1,0 +1,25 @@
+{% extends "Pam/base.html" %}
+
+{% block title %} Listing Pam | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Listing</h2>
+    <hr>
+<div>
+<div class="list-group">
+{% for obj in pam %}
+  <a href="{{ obj.get_absolute_url }}" class="list-group-item">{{obj.Nom_scientifique}}</a>
+  {% for object in utilite %}
+  	<ul>
+  		
+  		<li>{{object.id_Utilite}}</li>
+  		<li>{{object.maladie}}</li>
+  		<li>{{object.mode_emploi}}</li>
+
+
+  	</ul>
+  {% endfor %}
+{% endfor %}
+</div>
+{% endblock content %}
